@@ -9,7 +9,7 @@ import (
 )
 
 var (
-	in = bufio.NewReader(os.Stdin)
+	in  = bufio.NewReader(os.Stdin)
 	out = bufio.NewWriter(os.Stdout)
 )
 
@@ -18,7 +18,7 @@ func solve(nums []int) (res int) {
 	slow, fast := 2, 2
 
 	for fast < n {
-		if nums[fast] != nums[fast-2]{
+		if nums[fast] != nums[fast-2] {
 			nums[slow] = nums[fast]
 			slow++
 		}
@@ -50,7 +50,7 @@ func main() {
 	defer out.Flush()
 	nums, err := readLineAsInts(in)
 	if err != nil || len(nums) == 0 {
-		return 
+		return
 	}
 
 	newLength := solve(nums)

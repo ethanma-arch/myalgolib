@@ -9,6 +9,8 @@ MyAlgoLib
   - `leetcode/0026_remove_duplicates_from_sorted_array/`
   - `leetcode/0027_remove_element/`
   - `leetcode/0169_majority-element/`
+- `concurrent/`：多线程（并发）编程题，例如：
+  - `concurrent/alternating_odd_even/`：两个 goroutine 交替打印奇偶数（channel 同步）
 
 每个题目目录下一般包含：
 
@@ -26,6 +28,18 @@ go run main.go < input.txt
 ```
 
 或直接在评测环境中，让评测系统把用例通过标准输入喂给程序。
+
+多线程编程
+----------
+
+使用 Go 的 goroutine 与 channel 做并发/同步题，适合面试中的「多线程」环节。
+
+示例：`concurrent/alternating_odd_even` —— 两个 goroutine 交替打印 1～N 的奇数和偶数，顺序为 1,2,3,...,N。
+
+```bash
+cd concurrent/alternating_odd_even
+go run main.go
+```
 
 环境要求
 --------

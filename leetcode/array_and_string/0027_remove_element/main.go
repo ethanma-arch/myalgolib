@@ -8,18 +8,18 @@ import (
 )
 
 var (
-	in = bufio.NewScanner(os.Stdin)
+	in  = bufio.NewScanner(os.Stdin)
 	out = bufio.NewWriter(os.Stdout)
 )
 
-func init(){
+func init() {
 	in.Split(bufio.ScanWords)
 }
 
 func solve(nums []int, val int) int {
 	n := len(nums)
 	slow, fast := 0, 0
-	
+
 	for fast < n {
 		if nums[fast] != val {
 			nums[slow] = nums[fast]
@@ -36,7 +36,7 @@ func readInt() int {
 	return num
 }
 
-func main(){
+func main() {
 	defer out.Flush()
 
 	n := readInt()
@@ -47,7 +47,7 @@ func main(){
 	}
 
 	val := readInt()
-	
+
 	newLength := solve(nums, val)
 
 	fmt.Fprintf(out, "%d\n", newLength)
