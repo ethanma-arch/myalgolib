@@ -127,11 +127,24 @@ var in = bufio.NewReader(os.Stdin)
 import "strings"
 
 // 读取一行，去除首尾空格和换行
-func readLine(r *bufio.Reader) (string, error) {
-    line, err := r.ReadString('\n')
-    // 必须 Trim，否则末尾会有 '\n' 甚至 '\r'
-    line = strings.TrimSpace(line)
-    return line, err
+func readNextValidLine(r *bufio.Reader) (string, error) {
+    for {
+        line, err := r.ReadString('\n')
+        // 必须 Trim，否则末尾会有 '\n' 甚至 '\r'
+        line = strings.TrimSpace(line)
+		
+        // 如果读到内容了，返回
+        if len(line) > 0 {
+			return line, nil
+        }
+		
+		// 如果读到 EOF 且 line 为空，说明真的结束了
+		if err != nil {
+		    return "", err	
+        }
+        // 否则说明读到的是个空行，继续下一轮循环读
+    }
+	
 }
 ```
 
